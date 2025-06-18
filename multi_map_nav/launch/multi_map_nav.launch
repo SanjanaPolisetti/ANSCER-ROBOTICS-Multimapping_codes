@@ -1,0 +1,14 @@
+<launch>
+  <!-- Load a map (initial) -->
+  <node pkg="map_server" type="map_server" name="map_server" args="$(find multi_map_nav)/maps/room1.yaml"/>
+
+  <!-- AMCL localization -->
+  <node pkg="amcl" type="amcl" name="amcl"/>
+
+  <!-- move_base for navigation -->
+  <include file="$(find move_base)/launch/move_base.launch" />
+
+  <!-- Start RViz -->
+  <node pkg="rviz" type="rviz" name="rviz" args="-d $(find multi_map_nav)/rviz/multi_map_nav.rviz" />
+</launch>
+
